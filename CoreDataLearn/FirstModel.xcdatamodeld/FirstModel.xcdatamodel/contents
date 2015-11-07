@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9520" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
+    <entity name="ArInfo" representedClassName="ArInfo" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myname" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ArInfo" positionX="-1494" positionY="-1170" width="263" height="88"/>
+    </elements>
+</model>
