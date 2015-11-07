@@ -92,28 +92,39 @@
 #pragma mark - Application's Documents directory
 
 //插入数据
-- (void)insertCoreData:(NSMutableArray*)dataArray
+- (void)insertCoreData:(NSMutableArray*)dataArray andWithWhichClasstype:(FSO)type
 {
     NSManagedObjectContext *context = [self managedObjectContext];
-//    for (News *info in dataArray) {
-//        News *newsInfo = [NSEntityDescription insertNewObjectForEntityForName:TableName inManagedObjectContext:context];
-//        newsInfo.newsid = info.newsid;
-//        newsInfo.title = info.title;
-//        newsInfo.imgurl = info.imgurl;
-//        newsInfo.descr = info.descr;
-//        newsInfo.islook = info.islook;
-//        
-//        NSError *error;
-//        if(![context save:&error])
-//        {
-//            NSLog(@"不能保存：%@",[error localizedDescription]);
-//        }
-//    }
+    if (type == arinfo) {
+        for (ArInfo *info in dataArray) {
+            ArInfo *newsInfo = [NSEntityDescription insertNewObjectForEntityForName:ArInfoName inManagedObjectContext:context];
+            newsInfo.myid = info.myid;
+            newsInfo.myname = info.myname;
+            newsInfo.image = info.image;
+            NSError *error;
+            if(![context save:&error])
+            {
+                NSLog(@"不能保存：%@",[error localizedDescription]);
+            }
+        }
+    }
+    if (type == firstModel) {
+        for (FirstTabelModel * tabModel in dataArray) {
+            FirstTabelModel * newModel = [NSEntityDescription insertNewObjectForEntityForName:FirstTabelModelName inManagedObjectContext:context];
+            newModel.newname = tabModel.newname;
+            newModel.newmark = tabModel.newmark;
+            newModel.newid = tabModel.newid;
+            NSError *error;
+            if(![context save:&error])
+            {
+                NSLog(@"不能保存：%@",[error localizedDescription]);
+            }
+        }
+    }
 }
 
 //查询
-//查询
-- (NSMutableArray*)selectData:(int)pageSize andOffset:(int)currentPage
+- (NSMutableArray*)selectData:(int)pageSize andOffset:(int)currentPage andWithWhichClasstype:(FSO)type
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     
@@ -141,10 +152,10 @@
     return resultArray;
 }
 //删除
--(void)deleteData
+- (void)deleteDataWithWhichClasstype:(FSO)type
 {
     NSManagedObjectContext *context = [self managedObjectContext];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:TableName inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:ArInfoName inManagedObjectContext:context];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setIncludesPropertyValues:NO];
@@ -164,7 +175,7 @@
     }
 }
 //更新
-- (void)updateData:(NSString*)newsId  withIsLook:(NSString*)islook
+- (void)updateData:(NSString*)newsId withIsLook:(NSString*)islook andWithWhichClasstype:(FSO)type;
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     
@@ -173,7 +184,7 @@
     
     //首先你需要建立一个request
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:TableName inManagedObjectContext:context]];
+    [request setEntity:[NSEntityDescription entityForName:ArInfoName inManagedObjectContext:context]];
     [request setPredicate:predicate];//这里相当于sqlite中的查询条件，具体格式参考苹果文档
     
     //https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Predicates/Articles/pCreating.html

@@ -46,9 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    // 你再干 什么
-//    AppDelegate * apDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate]; // 引进自己项目的委托
-    QLCoreDataManger *apDelegate = [[QLCoreDataManger alloc]init];
+    QLCoreDataManger *apDelegate = [[QLCoreDataManger alloc]init]; // 引进自己项目的委托
     self.context = apDelegate.managedObjectContext;
     
     ArInfo * arInfo = [NSEntityDescription insertNewObjectForEntityForName:@"ArInfo" inManagedObjectContext:self.context];
@@ -66,6 +64,8 @@
     NSEntityDescription * entity = [NSEntityDescription entityForName:@"ArInfo" inManagedObjectContext:self.context];
     [fetchRequest setEntity:entity];
     
+    
+//    [apDelegate deleteDataWithWhichClasstype:arinfo];
     
     NSArray * fetchObject  =[self.context executeFetchRequest:fetchRequest error:&error];
     for (NSManagedObject * info in fetchObject) {

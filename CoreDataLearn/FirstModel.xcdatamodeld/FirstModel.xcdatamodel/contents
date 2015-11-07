@@ -5,7 +5,13 @@
         <attribute name="myid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="myname" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="FirstTabelModel" representedClassName="FirstTabelModel" syncable="YES">
+        <attribute name="newid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newmark" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newname" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="ArInfo" positionX="-1494" positionY="-1170" width="263" height="88"/>
+        <element name="FirstTabelModel" positionX="-1118" positionY="-1170" width="128" height="88"/>
     </elements>
 </model>
